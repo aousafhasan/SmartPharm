@@ -163,3 +163,55 @@ class Stock(models.Model):
 
     def __str__(self):
         return str(self.drug_name)
+
+
+class Dispense(models.Model):
+    patient_id = models.ForeignKey(Patients, on_delete=models.DO_NOTHING, null=True)
+    drug_id = models.ForeignKey(Stock, on_delete=models.SET_NULL, null=True, blank=False)
+    dispense_quantity = models.PositiveIntegerField(default='1', blank=False, null=True)
+    taken = models.CharField(max_length=300, null=True, blank=True)
+    stock_ref_no = models.CharField(max_length=300, null=True, blank=True)
+    instructions = models.TextField(max_length=300, null=True, blank=False)
+    dispense_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+
+class PatientFeedback(models.Model):
+    id = models.AutoField(primary_key=True)
+    patient_id = models.ForeignKey(Patients, on_delete=models.CASCADE)
+    admin_id = models.ForeignKey(AdminHOD, null=True, on_delete=models.CASCADE)
+    pharmacist_id = models.ForeignKey(Pharmacist, null=True, on_delete=models.CASCADE)
+    feedback = models.TextField(null=True)
+    feedback_reply = models.TextField(null=True)
+    admin_created_at = models.DateTimeField(null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
+
+
+@receiver(post_save, sender=CustomUser)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        if instance.user_type == 1:
+            AdminHOD.objects.create(admin=instance)
+        if instance.user_type == 2:
+            Pharmacist.objects.create(admin=instance, address="")
+        if instance.user_type == 3:
+            Doctor.objects.create(admin=instance, address="")
+        if instance.user_type == 4:
+            PharmacyClerk.objects.create(admin=instance, address="")
+        if instance.user_type == 5:
+            Patients.objects.create(admin=instance, address="")
+
+
+@receiver(post_save, sender=CustomUser)
+def save_user_profile(sender, instance, **kwargs):
+    if instance.user_type == 1:
+        instance.adminhod.save()
+    if instance.user_type == 2:
+        instance.pharmacist.save()
+    if instance.user_type == 3:
+        instance.doctor.save()
+    if instance.user_type == 4:
+        instance.pharmacyclerk.save()
+    if instance.user_type == 5:
+        instance.patients.save()
