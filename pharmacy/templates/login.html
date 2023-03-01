@@ -25,7 +25,8 @@
 		body {
 			margin: 0;
 			padding: 0;
-			background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7_3c7yrPY5gWKW8R50KETpRXUNH7BdCyxwFsAMEFBrzI_pe-cb-D-qJ_MFwDL8hdQ0B8&usqp=CAU);
+			{#background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7_3c7yrPY5gWKW8R50KETpRXUNH7BdCyxwFsAMEFBrzI_pe-cb-D-qJ_MFwDL8hdQ0B8&usqp=CAU);#}
+            background: url(https://media.capc.org/images/AdobeStock_274131656.original.original.jpg);
 			/* background:rgb(255, 255, 255); */
 			/* url(https://cdn.wallpapersafari.com/70/37/zQbXdt.jpg) */
 			background-position: center;
@@ -70,8 +71,9 @@ i{
 		   margin-top: 50px !important;
 	   }
 	   .profile-header2,.br-n {
-  height: 10.75rem important;
-  background: url(https://jobs.newscientist.com/getasset/0f3de168-cdc2-410a-be98-ff892b0f6dab/) !important;
+  height: 10.75rem !important;
+  {#background: url(https://jobs.newscientist.com/getasset/0f3de168-cdc2-410a-be98-ff892b0f6dab/) !important;#}
+
   /* background:linear-gradient(to right,#44368a ,#445a80)!important; */
   /* background: linear-gradient(to right,#641eff 0,#a307dd 100%); */
   /* background: linear-gradient(40deg, #2096ff, #05ffa3) !important; */
@@ -171,7 +173,7 @@ button[type="submit"]:hover {
 											<div class="alert fade alert-simple alert-success alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show mt-1">
 												<button type="button" class="close font__size-18" data-dismiss="alert"> <span aria-hidden="true">
 											 <i class="fa fa-times greencross"></i>
-											 </a></span> <span class="sr-only">Close</span> </button> <i class="start-icon far fa-check-circle faa-tada animated"></i> <strong class="font__weight-semibold">Well done!</strong> {{message}} </div> {% endif %} {% endfor %} </div>
+											 </span> <span class="sr-only">Close</span> </button> <i class="start-icon far fa-check-circle faa-tada animated"></i> <strong class="font__weight-semibold">Well done!</strong> {{message}} </div> {% endif %} {% endfor %} </div>
 									</div> {% endif %}
 									<form class="input-light" method="POST">
 											{% csrf_token %}

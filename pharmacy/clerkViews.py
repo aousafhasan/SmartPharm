@@ -5,11 +5,11 @@ from django.contrib.auth.forms import UserCreationForm
 from .decorators import *
 from django.contrib.auth.decorators import login_required
 
-# from .forms import *
+from .forms import *
 from .models import *
 
 
-@login_required
+# @login_required
 def clerkHome(request):
     patients = Patients.objects.all().count()
 
