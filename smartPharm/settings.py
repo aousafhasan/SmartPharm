@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pharmacy.apps.PharmacyConfig',
+    'crispy_forms',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
