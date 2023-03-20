@@ -1,7 +1,7 @@
 from django.urls import path
 # from .import pharmacistViews,DoctorViews,views,patient_view,clerkViews
 from django.contrib.auth import views as auth_views
-from .import views, clerkViews, HODViews
+from .import views, clerkViews, HODViews, DoctorViews
 
 
 urlpatterns=[
@@ -29,7 +29,7 @@ path('admin_user/add_pharmacist/',HODViews.createPharmacist,name='add_pharmacist
     path('admin_user/delete_patient/<str:pk>/',HODViews.confirmDelete,name='delete_patient'),
     path('admin_user/patient_personalRecords/<pk>/',HODViews.patient_personalRecords,name='patient_record'),
     path('admin_user/delete_prescription/<str:pk>/',HODViews.deletePrescription,name='delete_prescription'),
-    # path('admin_user/doctor_profile/',DoctorViews.doctorProfile,name='doctor_profile'),
+    path('admin_user/doctor_profile/',DoctorViews.doctorProfile,name='doctor_profile'),
     path('admin_user/hod_profile/',HODViews.hodProfile,name='hod_profile'),
     path('admin_user/delete_doctor/<str:pk>/',HODViews.deleteDoctor,name='delete_doctor'),
     path('admin_user/delete_pharmacist/<str:pk>/',HODViews.deletePharmacist,name='delete_pharmacist'),
@@ -55,5 +55,14 @@ path('admin_user/add_pharmacist/',HODViews.createPharmacist,name='add_pharmacist
     path('receptionist/patient_personalRecords/<str:pk>/',clerkViews.patient_personalRecords,name='patient_record_clerk'),
     path('receptionist/delete_patient/<str:pk>/',clerkViews.confirmDelete,name='delete_patient_clerk'),
     # path('receptionist/dispense_drug/<str:pk>/',pharmacistViews.dispenseDrug,name='dispense_drug'),
+
+#Doctor
+    path('doctor_home/',DoctorViews.doctorHome,name='doctor_home'),
+    path('manage_patients/',DoctorViews.managePatients,name='manage_patient_doctor'),
+    path('doctor_prescribe_drug/<str:pk>/',DoctorViews.addPrescription,name='doctor_prescribe2'),
+    path('patient_personalDetails/<str:pk>/',DoctorViews.patient_personalDetails,name='patient_record_doctor'),
+    path('manage_prescription_doctor/',DoctorViews.managePrescription,name='manage_precrip_doctor'),
+    path('doctor_prescribe_delete/<str:pk>/',DoctorViews.deletePrescription,name='doctor_prescrip_delete'),
+    path('doctor_prescribe_edit/<str:pk>/',DoctorViews.editPrescription,name='doctor_prescrip_edit'),
 
 ]
