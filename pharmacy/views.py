@@ -44,3 +44,11 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+def powerbi1(request):
+
+
+    # context = {
+    #     "patients_total": patients
+    # }
+    return render(request, 'powbi1.html',)

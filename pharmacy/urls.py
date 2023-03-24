@@ -1,7 +1,7 @@
 from django.urls import path
 # from .import pharmacistViews,DoctorViews,views,patient_view,clerkViews
 from django.contrib.auth import views as auth_views
-from .import views, clerkViews, HODViews, DoctorViews
+from .import views, clerkViews, HODViews, DoctorViews, patient_view
 
 
 urlpatterns=[
@@ -10,6 +10,7 @@ urlpatterns=[
     path('admin_user/all_patients/',HODViews.allPatients,name='all_patients'),
     path('login/',views.loginPage,name='login'),
     path('logout/',views.logoutUser,name='logout'),
+    path('admin_user/powbireport1/',views.powerbi1, name='pb1'),
     # path('get_user_details/', views.get_user_details, name="get_user_details"),
 
 #HOD
@@ -64,5 +65,14 @@ path('admin_user/add_pharmacist/',HODViews.createPharmacist,name='add_pharmacist
     path('manage_prescription_doctor/',DoctorViews.managePrescription,name='manage_precrip_doctor'),
     path('doctor_prescribe_delete/<str:pk>/',DoctorViews.deletePrescription,name='doctor_prescrip_delete'),
     path('doctor_prescribe_edit/<str:pk>/',DoctorViews.editPrescription,name='doctor_prescrip_edit'),
+
+#Patients
+    path('patient_profile/',patient_view.patientProfile,name='patient_profile'),
+    path('patient_home/',patient_view.patientHome,name='patient_home'),
+    path('patient_feedback/',patient_view.patient_feedback,name='patient_feedback'),
+    path('staff_feedback_save/', patient_view.patient_feedback_save, name="patient_feedback_save"),
+    path('taken_home/',patient_view.patient_dispense3,name='taken_home'),
+    path('delete_patient_feedback2/<str:pk>/',patient_view.Patientdeletefeedback, name="delete_fed2"),
+    path('delete_dispen/',patient_view.myPrescriptionDelete,name='taken_delete'),
 
 ]
