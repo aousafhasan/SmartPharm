@@ -11,6 +11,7 @@ urlpatterns=[
     path('login/',views.loginPage,name='login'),
     path('logout/',views.logoutUser,name='logout'),
     path('admin_user/powbireport1/',views.powerbi1, name='pb1'),
+    path('admin_user/powbireport2/',views.powerbi2, name='pb2'),
     # path('get_user_details/', views.get_user_details, name="get_user_details"),
 
 #HOD
