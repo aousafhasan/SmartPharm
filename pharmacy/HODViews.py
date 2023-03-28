@@ -236,7 +236,7 @@ def createPharmacyClerk(request):
             return redirect('add_pharmacyClerk')
 
     context = {
-        "title": "Add Pharmacy Clerk"
+        "title": "Add Receptionist"
 
     }
 

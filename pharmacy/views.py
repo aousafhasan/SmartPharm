@@ -52,3 +52,11 @@ def powerbi1(request):
     #     "patients_total": patients
     # }
     return render(request, 'powbi1.html',)
+
+def powerbi2(request):
+
+
+    # context = {
+    #     "patients_total": patients
+    # }
+    return render(request, 'powbi2.html',)
